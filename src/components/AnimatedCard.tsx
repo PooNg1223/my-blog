@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface AnimatedCardProps {
   post: {
@@ -35,9 +36,9 @@ export default function AnimatedCard({ post, index }: AnimatedCardProps) {
       <div className="p-6 md:w-2/3">
         <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">{post.date}</div>
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-          <a href={`/posts/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
+          <Link href={`/posts/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
             {post.title}
-          </a>
+          </Link>
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mb-4">{post.summary}</p>
         <div className="flex flex-wrap gap-2 mb-4">
@@ -52,14 +53,14 @@ export default function AnimatedCard({ post, index }: AnimatedCardProps) {
           ))}
         </div>
         <div className="flex items-center space-x-4">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={`/posts/${post.slug}`}
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            자세히 읽기
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href={`/posts/${post.slug}`}
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              자세히 읽기
+            </Link>
+          </motion.div>
         </div>
       </div>
     </motion.article>

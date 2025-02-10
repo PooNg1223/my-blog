@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import JsonLD from '@/components/JsonLD';
 import Comments from '@/components/Comments';
 import ShareButtons from '@/components/ShareButtons';
+import Link from 'next/link';
 
 // 임시 데이터 (실제로는 별도 파일이나 DB에서 관리하는 것이 좋습니다)
 const posts = [
@@ -198,12 +199,12 @@ export default function PostPage({ params }: Props) {
         </div>
       </div>
       <div className="mt-8">
-        <a
+        <Link
           href="/posts"
           className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
         >
           ← 목록으로 돌아가기
-        </a>
+        </Link>
       </div>
       <div className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">공유하기</h2>

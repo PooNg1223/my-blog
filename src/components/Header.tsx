@@ -1,20 +1,36 @@
+import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
+
 export default function Header() {
-    return (
-      <header className="bg-white dark:bg-gray-800 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center justify-between">
-            <div className="flex items-center">
-              <a href="/" className="text-2xl font-bold text-gray-800 dark:text-white">
-                My Blog
-              </a>
-            </div>
-            <div className="flex space-x-4">
-              <a href="/" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">Home</a>
-              <a href="/posts" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">Posts</a>
-              <a href="/about" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">About</a>
-            </div>
-          </nav>
+  return (
+    <header className="bg-white dark:bg-gray-900 shadow">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex space-x-8">
+            <Link 
+              href="/" 
+              className="flex items-center text-gray-900 dark:text-white hover:text-blue-600"
+            >
+              홈
+            </Link>
+            <Link 
+              href="/about" 
+              className="flex items-center text-gray-900 dark:text-white hover:text-blue-600"
+            >
+              소개
+            </Link>
+            <Link 
+              href="/posts" 
+              className="flex items-center text-gray-900 dark:text-white hover:text-blue-600"
+            >
+              블로그
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <ThemeToggle />
+          </div>
         </div>
-      </header>
-    );
-  }
+      </nav>
+    </header>
+  );
+}

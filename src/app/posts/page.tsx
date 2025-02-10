@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import SearchBar from '@/components/SearchBar';
 import AnimatedCard from '@/components/AnimatedCard';
+
 // 임시 데이터
 const posts = [
   {

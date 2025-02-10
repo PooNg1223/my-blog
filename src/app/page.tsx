@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
+
 export const metadata: Metadata = {
   title: 'My Tech Blog - jplee 이야기',
   description: '서비스기획, 프로젝트 경험, 그리고 기술 트렌드에 대한 이야기를 공유합니다.',

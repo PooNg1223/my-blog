@@ -8,6 +8,9 @@ const nextConfig = {
         },
       ],
     },
+    eslint: {
+      dirs: ['src'], // ESLint가 검사할 디렉토리 지정
+    }
   }
   
   module.exports = nextConfig
