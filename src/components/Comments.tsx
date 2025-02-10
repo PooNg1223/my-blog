@@ -16,16 +16,18 @@ export default function Comments() {
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
     script.className = 'giscus-script';
-    script.dataset.repo = '[GitHub 사용자명]/[레포지토리명]';
-    script.dataset.repoId = '[레포지토리 ID]';
-    script.dataset.category = 'Comments';
-    script.dataset.categoryId = '[카테고리 ID]';
-    script.dataset.mapping = 'pathname';
-    script.dataset.strict = '0';
-    script.dataset.reactionsEnabled = '1';
-    script.dataset.emitMetadata = '0';
+    // 여기에 본인의 giscus 스크립트에서 복사한 실제 값들을 붙여넣어주세요
+    script.dataset.repo = "PooNg1223/my-blog";
+    script.dataset.repoId = "R_kgDOLYGQtw";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOLYGQt84CdvYB";
+    script.dataset.mapping = "pathname";
+    script.dataset.strict = "0";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "bottom";
     script.dataset.theme = theme === 'dark' ? 'dark' : 'light';
-    script.dataset.lang = 'ko';
+    script.dataset.lang = "ko";
     script.crossOrigin = 'anonymous';
     script.async = true;
 

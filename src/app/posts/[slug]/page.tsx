@@ -1,8 +1,9 @@
-import type { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import JsonLD from '@/components/JsonLD';
 import Comments from '@/components/Comments';
+import ShareButtons from '@/components/ShareButtons';
 
 // 임시 데이터 (실제로는 별도 파일이나 DB에서 관리하는 것이 좋습니다)
 const posts = [
@@ -96,7 +97,10 @@ type Props = {
   params: { slug: string }
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const post = posts.find(post => post.slug === params.slug);
   
   if (!post) {
@@ -104,6 +108,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: 'Post Not Found'
     };
   }
+
+  const previousImages = (await parent).openGraph?.images || []
 
   return {
     title: post.title,
@@ -114,21 +120,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      images: [
-        {
-          url: post.imageUrl,
-          width: 1200,
-          height: 630,
-          alt: post.title
-        }
-      ]
+      images: [post.imageUrl, ...previousImages],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.summary,
-      images: [post.imageUrl]
-    }
+      images: [post.imageUrl],
+    },
   };
 }
 
@@ -205,6 +204,13 @@ export default function PostPage({ params }: Props) {
         >
           ← 목록으로 돌아가기
         </a>
+      </div>
+      <div className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">공유하기</h2>
+        <ShareButtons 
+          title={post.title} 
+          url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com'}/posts/${post.slug}`} 
+        />
       </div>
       <Comments />
     </article>
